@@ -77,3 +77,25 @@ This is the configuration file for your serverless project. You will specify you
 
 Also you can specify resource definitions in this file that will create the resources you list in the serverless.yml file and deploy them in your cloud.
 ```
+
+# Create our first function using native function URL:
+
+# Create an .ignore file to hide .serverless folder form version control.
+
+# Invoke our function - investigate the event.
+
+# Create form and submit form data to endpoint using HTML
+# action attribute and redirect request to "sonnyfishback.com" for now.
+
+# Let's deploy a resource to host our website and redirect back to the website.
+
+Yes, you can redirect users. Here is [more information on response types](sonnyfishback.com).
+
+# How about a more complex API example? Limitations of native lambda url?
+# Add event configuration for httpApi for POST event.
+# Let's manipulate this data on the server and register the user.
+
+# Now let's use the fetch module to make the request instead of the form action.
+
+
+# Any questions?
