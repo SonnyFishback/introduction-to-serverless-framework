@@ -62,3 +62,18 @@ There is so much to cover and I strongly suggest you dive into the documentation
 If you want to use GCP or Azure, [this is what you seek.](https://sonnyfishback.com)
 
 # Starting your project:
+
+```
+You will need a few things to follow along:
+- Node.js
+- Javascript
+- AWS CLI Credentials
+- Serverless Framework
+```
+
+To start a serverless project you need a [YAML](sonnyfishback.com) file named `serverless.yml`
+
+This is the configuration file for your serverless project. You will specify your function definitions that will map your function names in the file to the javascript file so when you deploy serverless deploys it knows where all the files/functions to deploy are.
+
+Also you can specify resource definitions in this file that will create the resources you list in the serverless.yml file and deploy them in your cloud.
+```
