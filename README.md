@@ -2,15 +2,16 @@
 
 Today we will be diving into one of my favorite tools to build full stack applications with, the serverless framework. Before we dive into the great things about serverless framework let's first break down what what the word serverless means in software development.
 
-What is serverless?
+So what is serverless?
 
 Serverless is a computation strategy and billing model that allows you to pay only for the computation power your application uses. Instead of paying for a typical server that
 runs continuously in the cloud you can use serverless compute that will run only when you need it and turn off when you don't.
 
-If a standard server in the cloud is a light bulb, serverless compute would be a light that has a motion sensor so it only turns on when you need it and turns off when you do not.
+If a standard server in the cloud is a light bulb, serverless compute would be a light that has a motion sensor so it only turns on when you need it and turns off when you don't.
 
-Sounds cool right? This is an awesome strategy that you can leverage across cloud providers making it a great tool for start ups and projects that may scale
-up in resource needs in a very short time.
+Another awesome benefit of serverless compute is auto scaling. Traditional servers have bandwidth limitations. This means the more users you have, them more servers you must provision. With serverless compute, your compute instances scale up and down with your resource needs automatically.
+
+Sounds cool right? This is an awesome strategy that you can leverage across cloud providers making it a great tool for start ups and projects that may scale up in resource needs in a very short time.
 
 As with all technical decisions, the choice to use the serverless strategy depends on your unique situation. Serverless is great for some uses cases and is not a great fit for others.
 
@@ -31,40 +32,8 @@ When developing serverless applications you can imagine your entire code base as
 
 Instead of a tightly coupled API that is deployed as a single artifact, you can change and deploy your serverless API one function at a time.
 
-Your business logic might look something this like this:
+![serverless meme](https://blog.ymirapp.com/uploads/2022/06/serverless-scooby-doo-meme.jpg?height=666&width=500)
 
-```javascript
-    /**
-     * This handler function is the entry point of your
-     * application.
-     * 
-     * The cloud service provider will take this file and
-     * run it on a server.
-     * 
-     * Every time the cloud service receives an "event"
-     * that is supposed to "invoke" your function
-     * it will forward the event to the  entry point of the file
-     * and all the code will be executed and
-     * return the data returned in the function.
-     * 
-     */
-    import { database } '../database.js';
-
-    export function handler (event) => {
-        if (!database) return 'no database found';
-        // get the index that was requested from the frontend.
-        const userIndex = event.userIndex
-
-        // use that index to get the user by index from the database.
-        const user = database.users[userIndex];
-
-        // if no user return no user to frontend.
-        if (!user) return 'user not found';
-
-        // return that user
-        return user;
-    };
-```
 
 # What is the Serverless Framework
 
@@ -76,8 +45,8 @@ It enables you to rapidly develop serverless applications while serverless frame
 The main concepts of Serverless Framework are:
 
 - Functions (Your micro servers)
-- Events (The reasons the micro servers start and the data that is forwarded to them)
-- Resources (Infrastructure as Code resource configurations allowing you to create instances of cloud resources named in a config file)
+- Events (The reasons the micro servers start and the data that is forwarded to the micro-server)
+- Resources (Infrastructure as Code resource configurations allowing you to create and deploy instances of cloud resources named in a config file)
 - Services (A unit of organization - you can have multiple services for one application)
 
 # Starting your project:
@@ -88,15 +57,14 @@ You will need a few things to follow along:
 - Javascript
 - AWS CLI Credentials
 - Serverless Framework
-
 ```
-To start a serverless project you need a [YAML](sonnyfishback.com) file named `serverless.yml`. (This can be JS, TS and JSON instead of YAML)
+To start a serverless project you need a [YAML](sonnyfishback.com) file named `serverless.yml`. (This can be JS, TS and JSON instead of YAML).
 
 This is the configuration file for your serverless project. You will specify your function definitions that will map your function names in the serverless.yml file to the javascript file where the function code is located so when you deploy serverless knows where all the files/functions to deploy are located.
 
-Also you can specify resource definitions in the serverless.yml that will create the resources you list in the serverless.yml file and deploy them in your cloud.
+Also you can specify resource definitions in the serverless.yml that will create the resources you list and deploy them in your cloud.
 
-Some resources you may deploy are databases, pub sub queues, alarm configurations .etc.
+Some resources you may deploy are databases, alarm configurations .etc.
 
 ```
 1. Let's create our first lambda function using lambdas native function URL. (console.log the event!)
